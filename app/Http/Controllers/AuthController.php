@@ -18,7 +18,7 @@ class AuthController extends Controller
         try {
             $credentials = $req->only('email','password');
             $auth = $this->loginService->execute($credentials);
-            return response()->json(['status'=>true],200);
+            return response()->json(['status'=>true,$auth],200);
         } catch (\Exception $exception) {
             return response()->json(['error'=>true,'message'=>$exception->getMessage()],$exception->getCode());
         }
